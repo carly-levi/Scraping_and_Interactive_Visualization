@@ -1,0 +1,357 @@
+---
+title: "HW4_Carly_Levi"
+author: "Carly Levi"
+date: "November 19, 2015"
+output: html_document
+runtime: shiny
+---
+
+```{r}
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(rvest)
+library(ggplot2)
+```
+
+#Scraping Data From the Web
+##2014-2015
+```{r}
+page <- read_html("http://goduke.statsgeek.com/basketball-m/seasons/schedule.php?season=2014-15")
+
+date <- page %>%
+  html_nodes(".stattextline b") %>%
+  html_text()
+
+opponent <- page %>%
+  html_nodes(".stattextltgray2:nth-child(3)") %>%
+  html_text() %>%
+  str_trim()
+
+rank <- page %>%
+  html_nodes(".stattext2:nth-child(4)") %>%
+  html_text() %>%
+  str_trim()
+
+venue <- page %>%
+  html_nodes(".stattextltgray2:nth-child(5)") %>%
+  html_text() %>%
+  str_trim()
+
+win_loss <- page %>%
+  html_nodes(".stattext2:nth-child(6)") %>%
+  html_text() %>%
+  str_trim()
+
+score <- page %>%
+  html_nodes(".stattextltgray2~ .stattext2+ .stattext2") %>%
+  html_text() %>%
+  str_trim()
+
+attendance <- page %>%
+  html_nodes(".stattextltgray2:nth-child(8)") %>%
+  html_text() %>%
+  str_trim()
+
+tiptime <- page %>%
+  html_nodes(".stattext2:nth-child(9)") %>%
+  html_text() %>%
+  str_trim()
+
+tv <- page %>%
+  html_nodes(".stattextltgray2:nth-child(10)") %>%
+  html_text() %>%
+  str_trim()
+
+
+
+# put fields into a data frame --------------------------------------
+
+blue_devils_1415 <- data.frame(date, opponent, rank, venue, win_loss, score, attendance, tiptime, tv)
+
+blue_devils_1415$season <- "14-15"
+```
+
+##2013-2014
+```{r}
+page <- read_html("http://goduke.statsgeek.com/basketball-m/seasons/schedule.php?season=2013-14")
+
+date <- page %>%
+  html_nodes(".stattextline b") %>%
+  html_text()
+
+opponent <- page %>%
+  html_nodes(".stattextltgray2:nth-child(3)") %>%
+  html_text() %>%
+  str_trim()
+
+rank <- page %>%
+  html_nodes(".stattext2:nth-child(4)") %>%
+  html_text() %>%
+  str_trim()
+
+venue <- page %>%
+  html_nodes(".stattextltgray2:nth-child(5)") %>%
+  html_text() %>%
+  str_trim()
+
+win_loss <- page %>%
+  html_nodes(".stattext2:nth-child(6)") %>%
+  html_text() %>%
+  str_trim()
+
+score <- page %>%
+  html_nodes(".stattextltgray2~ .stattext2+ .stattext2") %>%
+  html_text() %>%
+  str_trim()
+
+attendance <- page %>%
+  html_nodes(".stattextltgray2:nth-child(8)") %>%
+  html_text() %>%
+  str_trim()
+
+tiptime <- page %>%
+  html_nodes(".stattext2:nth-child(9)") %>%
+  html_text() %>%
+  str_trim()
+
+tv <- page %>%
+  html_nodes(".stattextltgray2:nth-child(10)") %>%
+  html_text() %>%
+  str_trim()
+
+# put fields into a data frame --------------------------------------
+
+blue_devils_1314 <- data.frame(date, opponent, rank, venue, win_loss, score, attendance, tiptime, tv)
+
+blue_devils_1314$season <- "13-14"
+```
+
+##2012-2013
+```{r}
+page <- read_html("http://goduke.statsgeek.com/basketball-m/seasons/schedule.php?season=2012-13")
+
+date <- page %>%
+  html_nodes(".stattextline b") %>%
+  html_text()
+
+opponent <- page %>%
+  html_nodes(".stattextltgray2:nth-child(3)") %>%
+  html_text() %>%
+  str_trim()
+
+rank <- page %>%
+  html_nodes(".stattext2:nth-child(4)") %>%
+  html_text() %>%
+  str_trim()
+
+venue <- page %>%
+  html_nodes(".stattextltgray2:nth-child(5)") %>%
+  html_text() %>%
+  str_trim()
+
+win_loss <- page %>%
+  html_nodes(".stattext2:nth-child(6)") %>%
+  html_text() %>%
+  str_trim()
+
+score <- page %>%
+  html_nodes(".stattextltgray2~ .stattext2+ .stattext2") %>%
+  html_text() %>%
+  str_trim()
+
+attendance <- page %>%
+  html_nodes(".stattextltgray2:nth-child(8)") %>%
+  html_text() %>%
+  str_trim()
+
+tiptime <- page %>%
+  html_nodes(".stattext2:nth-child(9)") %>%
+  html_text() %>%
+  str_trim()
+
+tv <- page %>%
+  html_nodes(".stattextltgray2:nth-child(10)") %>%
+  html_text() %>%
+  str_trim()
+
+# put fields into a data frame --------------------------------------
+
+blue_devils_1213 <- data.frame(date, opponent, rank, venue, win_loss, score, attendance, tiptime, tv)
+
+blue_devils_1213$season <- "12-13"
+```
+
+##2011-2012
+```{r}
+page <- read_html("http://goduke.statsgeek.com/basketball-m/seasons/schedule.php?season=2011-12")
+
+date <- page %>%
+  html_nodes(".stattextline b") %>%
+  html_text()
+
+opponent <- page %>%
+  html_nodes(".stattextltgray2:nth-child(3)") %>%
+  html_text() %>%
+  str_trim()
+
+rank <- page %>%
+  html_nodes(".stattext2:nth-child(4)") %>%
+  html_text() %>%
+  str_trim()
+
+venue <- page %>%
+  html_nodes(".stattextltgray2:nth-child(5)") %>%
+  html_text() %>%
+  str_trim()
+
+win_loss <- page %>%
+  html_nodes(".stattext2:nth-child(6)") %>%
+  html_text() %>%
+  str_trim()
+
+score <- page %>%
+  html_nodes(".stattextltgray2~ .stattext2+ .stattext2") %>%
+  html_text() %>%
+  str_trim()
+
+attendance <- page %>%
+  html_nodes(".stattextltgray2:nth-child(8)") %>%
+  html_text() %>%
+  str_trim()
+
+tiptime <- page %>%
+  html_nodes(".stattext2:nth-child(9)") %>%
+  html_text() %>%
+  str_trim()
+
+tv <- page %>%
+  html_nodes(".stattextltgray2:nth-child(10)") %>%
+  html_text() %>%
+  str_trim()
+
+# put fields into a data frame --------------------------------------
+
+blue_devils_1112 <- data.frame(date, opponent, rank, venue, win_loss, score, attendance, tiptime, tv)
+
+blue_devils_1112$season <- "11-12"
+```
+
+##2010-2011
+```{r}
+page <- read_html("http://goduke.statsgeek.com/basketball-m/seasons/schedule.php?season=2010-11")
+
+date <- page %>%
+  html_nodes(".stattextline b") %>%
+  html_text()
+
+opponent <- page %>%
+  html_nodes(".stattextltgray2:nth-child(3)") %>%
+  html_text() %>%
+  str_trim()
+
+rank <- page %>%
+  html_nodes(".stattext2:nth-child(4)") %>%
+  html_text() %>%
+  str_trim()
+
+venue <- page %>%
+  html_nodes(".stattextltgray2:nth-child(5)") %>%
+  html_text() %>%
+  str_trim()
+
+win_loss <- page %>%
+  html_nodes(".stattext2:nth-child(6)") %>%
+  html_text() %>%
+  str_trim()
+
+score <- page %>%
+  html_nodes(".stattextltgray2~ .stattext2+ .stattext2") %>%
+  html_text() %>%
+  str_trim()
+
+attendance <- page %>%
+  html_nodes(".stattextltgray2:nth-child(8)") %>%
+  html_text() %>%
+  str_trim()
+
+tiptime <- page %>%
+  html_nodes(".stattext2:nth-child(9)") %>%
+  html_text() %>%
+  str_trim()
+
+tv <- page %>%
+  html_nodes(".stattextltgray2:nth-child(10)") %>%
+  html_text() %>%
+  str_trim()
+
+# put fields into a data frame --------------------------------------
+
+blue_devils_1011 <- data.frame(date, opponent, rank, venue, win_loss, score, attendance, tiptime, tv)
+
+blue_devils_1011$season <- "10-11"
+```
+
+```{r}
+blue_devils <- rbind(blue_devils_1415, blue_devils_1314, blue_devils_1213, blue_devils_1112, blue_devils_1011)
+
+#blue_devils
+```
+
+#Create a Shiny App
+```{r}
+sidebarLayout(
+    sidebarPanel(
+      
+      # Select population distribution
+      selectInput("var",
+                  "X-Variable",
+                  choices = c("date",
+                              "opponent",
+                              "venue",
+                              "rank",
+                              "win_loss",
+                              "score",
+                              "attendance",
+                              "tiptime",
+                              "season")),
+      
+      selectInput("var2",
+                  "Y-Variable",
+                  choices = c("date",
+                              "opponent",
+                              "venue",
+                              "rank",
+                              "win_loss",
+                              "score",
+                              "attendance",
+                              "tiptime",
+                              "season")),
+          hr()
+      
+      ),
+
+    mainPanel(
+      plotOutput("graph")
+    )
+  ) 
+
+
+output$graph <- renderPlot({
+      
+      graph_name = switch(input$var,
+                        "14-15" = "14-15",
+                        "13-14" = "13-14",
+                        "12-13" = "12-13",
+                        "11-12" = "11-12",
+                        "10-11" = "10-11") 
+      
+      ggplot(data = blue_devils, aes_string(x = input$var, y = input$var2)) +
+        geom_point(position = "jitter") +
+        ggtitle(graph_name)
+    })
+
+
+```
+
+
